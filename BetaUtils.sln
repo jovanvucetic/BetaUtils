@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Core", "BetaUtils.Core\BetaUtils.Core.csproj", "{493D84C0-CED9-4F22-9A3B-4DA15634059E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.Core", "BetaUtils.Core\BetaUtils.Core.csproj", "{493D84C0-CED9-4F22-9A3B-4DA15634059E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Api.Core", "BetaUtils.Api.Core\BetaUtils.Api.Core.csproj", "{6C519EE4-8E3C-4258-B006-1D5F23126BC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.Api.Core", "BetaUtils.Api.Core\BetaUtils.Api.Core.csproj", "{6C519EE4-8E3C-4258-B006-1D5F23126BC4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{4AFCBC18-4813-4007-A76C-80FAB4D58099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Data", "BetaUtils.Data\BetaUtils.Data.csproj", "{3A31B2AD-2840-4E75-AC42-64136D21E44D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.Data", "BetaUtils.Data\BetaUtils.Data.csproj", "{3A31B2AD-2840-4E75-AC42-64136D21E44D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Tests", "BetaUtils.Tests\BetaUtils.Tests.csproj", "{89811C32-1F2B-4D82-92EE-1A54C750A527}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{3A31B2AD-2840-4E75-AC42-64136D21E44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A31B2AD-2840-4E75-AC42-64136D21E44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A31B2AD-2840-4E75-AC42-64136D21E44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89811C32-1F2B-4D82-92EE-1A54C750A527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89811C32-1F2B-4D82-92EE-1A54C750A527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89811C32-1F2B-4D82-92EE-1A54C750A527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89811C32-1F2B-4D82-92EE-1A54C750A527}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

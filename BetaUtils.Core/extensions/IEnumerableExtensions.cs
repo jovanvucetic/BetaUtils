@@ -85,8 +85,8 @@ namespace BetaUtils.Core.Extensions
         /// <returns>New IEnumerable collections split into collections with provided number of items</returns>
         public static IEnumerable<IEnumerable<T>> Batch<T>(this IEnumerable<T> items, int numberOfItemsPerBatch)
         {
-            return items.Select((item, inx) => new { item, inx })
-                .GroupBy(x => x.inx / numberOfItemsPerBatch)
+            return items.Select((item, totalNumber) => new { item, totalNumber })
+                .GroupBy(x => x.totalNumber / numberOfItemsPerBatch)
                 .Select(x => x.Select(y => y.item));
         }
 
@@ -98,12 +98,12 @@ namespace BetaUtils.Core.Extensions
         /// <exception cref="ArgumentNullException"></exception>
         public static IEnumerable<T> RemoveNulls<T>(this IEnumerable<T> items)
         {
-            if (items is null)
+            if (items == null || !items.Any())
             {
                 throw new ArgumentNullException(nameof(items));
             }
 
-            foreach (T item in items)
+            foreach (var item in items)
             {
                 if (item != null)
                 {
