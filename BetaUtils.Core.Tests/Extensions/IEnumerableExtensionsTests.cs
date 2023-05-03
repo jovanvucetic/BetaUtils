@@ -9,14 +9,6 @@ namespace BetaUtils.Tests.Extensions
     {
 
         [TestMethod]
-        public void IsNullOrEmpty_ReturnsTrue_WhenCollectionIsNull()
-        {
-            IEnumerable<int> items = null;
-            bool result = IEnumerableExtensions.IsNullOrEmpty(items);
-            Assert.IsTrue(result);
-        }
-
-        [TestMethod]
         public void IsNullOrEmpty_ReturnsTrue_WhenCollectionIsEmpty()
         {
             IEnumerable<int> items = Enumerable.Empty<int>();
@@ -30,16 +22,6 @@ namespace BetaUtils.Tests.Extensions
             IEnumerable<int> items = new List<int> { 1, 2, 3 };
             bool result = IEnumerableExtensions.IsNullOrEmpty(items);
             Assert.IsFalse(result);
-        }
-
-        [TestMethod]
-        public void ForEach_WithNullItems_ReturnsEmptyEnumerable()
-        {
-            IEnumerable<int> items = null;
-
-            var result = IEnumerableExtensions.ForEach(items, item => Console.WriteLine(item));
-
-            Assert.IsFalse(result.Any());
         }
 
         [TestMethod]

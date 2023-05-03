@@ -14,7 +14,7 @@ namespace BetaUtils.Core.Extensions
         /// <returns>Bool</returns>
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> items)
         {
-            return items == null || !items.Any();
+            return !items.Any();
         }
 
         /// <summary>
@@ -25,11 +25,6 @@ namespace BetaUtils.Core.Extensions
         /// <returns>IEnumerable</returns>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> items, Action<T> action)
         {
-            if (items is null)
-            {
-                return Enumerable.Empty<T>();
-            }
-
             if (action is null)
             {
                 throw new ArgumentNullException(nameof(action));
