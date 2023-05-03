@@ -43,6 +43,24 @@ namespace BetaUtils.Tests.Extensions
         }
 
         [TestMethod]
+        public void ForEach_ActionIsNull_ThrowArgumentNullException()
+        {
+            var items = new List<int> { 1, 2, 3 };
+
+            Assert.ThrowsException<ArgumentNullException>(() => IEnumerableExtensions.ForEach(items, null));
+        }
+
+        [TestMethod]
+        public void ForEach_IteratesThroughList_EverythingIsOkay()
+        {
+            var items = new List<int> { 1, 2, 3 };
+
+            var result = IEnumerableExtensions.ForEach(items, item => Console.WriteLine(item));
+
+            CollectionAssert.AreEqual(items, result.ToList());
+        }
+
+        [TestMethod]
         public void ForEach_WithValidItemsAndAction_PerformsActionOnEachItem()
         {
             var items = new List<int> { 1, 2, 3 };

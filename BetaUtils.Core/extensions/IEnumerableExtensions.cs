@@ -98,11 +98,6 @@ namespace BetaUtils.Core.Extensions
         /// <exception cref="ArgumentNullException"></exception>
         public static IEnumerable<T> RemoveNulls<T>(this IEnumerable<T> items)
         {
-            if (items == null || !items.Any())
-            {
-                throw new ArgumentNullException(nameof(items));
-            }
-
             foreach (var item in items)
             {
                 if (item != null)
