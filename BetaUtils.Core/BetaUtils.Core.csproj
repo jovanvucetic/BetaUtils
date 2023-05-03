@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\" />
     <Folder Include="Extensions\" />
     <Folder Include="FeatureFlags\" />
     <Folder Include="Validation\" />
