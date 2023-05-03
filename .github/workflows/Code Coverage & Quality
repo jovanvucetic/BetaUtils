@@ -1,0 +1,50 @@
+name: Code Coverage & Quality
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Install coverlet
+        run: dotnet tool install --global coverlet.console
+
+      - name: Build and test
+        run: |
+          dotnet build
+          dotnet test --warnaserror --collect:"XPlat Code Coverage" --logger trx --results-directory TestResults /p:CoverletOutputFormat=lcov /p:MergeWith=coverage.json /p:ExcludeByFile="**/Program.cs"
+      - name: Install ReportGenerator
+        run: dotnet tool install -g dotnet-reportgenerator-globaltool
+
+      - name: Generate HTML report
+        run: reportgenerator "-reports:TestResults\**\coverage.cobertura.xml" "-targetdir:CoverageReports" "-reporttypes:Cobertura"
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          files: Cobertura.xml
+
+      - name: Fail if coverage is too low
+        run: |
+          $threshold = 80
+          $coverage = Get-Content CoverageReports\Cobertura.xml | Select-String -Pattern 'line-rate="(.*)"'
+          $coverage = ($coverage.Matches.Groups[1].Value)
+          
+          $firstValue = ($coverage -replace '"','' -split ' ')[0]
+          $coverageValue = [double]$firstValue * 100
+          $displayCoverageValue = [math]::round($coverageValue,2)
+          
+          if ($coverageValue -lt $threshold) {
+            Write-Error "Code coverage is below $threshold% ($displayCoverageValue%)"
+            exit 1
+          }
