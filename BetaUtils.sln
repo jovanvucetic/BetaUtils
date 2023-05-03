@@ -11,9 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.Data", "BetaUtils.Data\BetaUtils.Data.csproj", "{3A31B2AD-2840-4E75-AC42-64136D21E44D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Tests", "BetaUtils.Tests\BetaUtils.Tests.csproj", "{89811C32-1F2B-4D82-92EE-1A54C750A527}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Core.Tests", "BetaUtils.Core.Tests\BetaUtils.Core.Tests.csproj", "{18517E5B-FD21-4981-90B5-8663AC5A33FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.Core.Tests", "BetaUtils.Core.Tests\BetaUtils.Core.Tests.csproj", "{18517E5B-FD21-4981-90B5-8663AC5A33FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
