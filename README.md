@@ -1,3 +1,6 @@
+Build and Code Coverage:\
+[![Code Coverage & Quality](https://github.com/jovanvucetic/BetaUtils/actions/workflows/Code%20Coverage%20&%20Quality.yml/badge.svg)](https://github.com/jovanvucetic/BetaUtils/actions/workflows/Code%20Coverage%20&%20Quality.yml)
+
 <!-- TOC -->
 * [BetaUtils code styling and conventions](#betautils-code-styling-and-conventions)
 * [Creating working branch](#creating-working-branch)
