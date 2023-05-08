@@ -9,22 +9,6 @@ namespace BetaUtils.Tests.Extensions
     {
 
         [TestMethod]
-        public void IsNullOrEmpty_ReturnsTrue_WhenCollectionIsEmpty()
-        {
-            IEnumerable<int> items = Enumerable.Empty<int>();
-            bool result = IEnumerableExtensions.IsNullOrEmpty(items);
-            Assert.IsTrue(result);
-        }
-
-        [TestMethod]
-        public void IsNullOrEmpty_ReturnsFalse_WhenCollectionIsNotNullOrEmpty()
-        {
-            IEnumerable<int> items = new List<int> { 1, 2, 3 };
-            bool result = IEnumerableExtensions.IsNullOrEmpty(items);
-            Assert.IsFalse(result);
-        }
-
-        [TestMethod]
         public void ForEach_ActionIsNull_ThrowArgumentNullException()
         {
             var items = new List<int> { 1, 2, 3 };
@@ -63,9 +47,6 @@ namespace BetaUtils.Tests.Extensions
             var result = IEnumerableExtensions.ToHashSet(items);
 
             Assert.AreEqual(3, result.Count);
-            /*CollectionAssert.Contains(1, result);
-            Assert.Contains(2, result);
-            Assert.Contains(3, result);*/
         }
 
         [TestMethod]
@@ -86,9 +67,6 @@ namespace BetaUtils.Tests.Extensions
             var result = IEnumerableExtensions.ToObservableCollection(items);
 
             Assert.AreEqual(3, result.Count);
-            /*Assert.Contains(1, result);
-            Assert.Contains(2, result);
-            Assert.Contains(3, result);*/
         }
 
         [TestMethod]
@@ -119,11 +97,6 @@ namespace BetaUtils.Tests.Extensions
             var result = IEnumerableExtensions.Batch(items, 3).ToList();
 
             Assert.AreEqual(4, result.Count);
-
-          /*  Assert.AreEqual(new List<int> { 1, 2, 3 }, result[0]);
-            Assert.AreEqual(new List<int> { 4, 5, 6 }, result[1]);
-            Assert.AreEqual(new List<int> { 7, 8, 9 }, result[2]);
-            Assert.AreEqual(new List<int> { 10 }, result[3]);*/
         }
 
         [TestMethod]

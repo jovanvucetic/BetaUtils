@@ -8,20 +8,10 @@ namespace BetaUtils.Core.Extensions
     public static class IEnumerableExtensions
     {
         /// <summary>
-        /// Checks if IEnumerable is null or empty
+        /// Provides an extension method that iterates over the elements
+        /// of an <see cref="IEnumerable{T}"/> and performs 
+        /// the given <paramref name="action"/> on each element.
         /// </summary>
-        /// <typeparam name="items">IEnumerable</typeparam>
-        /// <returns>Bool</returns>
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> items)
-        {
-            return !items.Any();
-        }
-
-        /// <summary>
-        /// Iterates through IEnumerable
-        /// </summary>
-        /// <typeparam name="items">IEnumerable</typeparam>
-        /// <typeparam name="action">Action</typeparam>
         /// <returns>IEnumerable</returns>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> items, Action<T> action)
         {
@@ -41,18 +31,10 @@ namespace BetaUtils.Core.Extensions
         /// <summary>
         /// Converts an IEnumerable to a HashSet
         /// </summary>
-        /// <typeparam name="items">IEnumerable</typeparam>
         /// <returns>HashSet</returns>
         public static HashSet<T> ToHashSet<T>(this IEnumerable<T> items)
         {
-            HashSet<T> hashSet = new HashSet<T>();
-
-            foreach (var item in items)
-            {
-                hashSet.Add(item);
-            }
-
-            return hashSet;
+            return new HashSet<T>(items);
         }
 
         /// <summary>
@@ -62,26 +44,17 @@ namespace BetaUtils.Core.Extensions
         /// <returns>ObservableCollection</returns>
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> items)
         {
-            var observableCollection = new ObservableCollection<T>();
-
-            foreach (var item in items)
-            {
-                observableCollection.Add(item);
-            }
-
-            return observableCollection;
+            return new ObservableCollection<T>(items);
         }
 
         /// <summary>
         /// Takes a collection and splits it into a batch of collections with provided number of values
         /// </summary>
-        /// <param name="items">IEnumerable</param>
-        /// <param name="numberOfItemsPerBatch">Integer</param>
         /// <returns>New IEnumerable collections split into collections with provided number of items</returns>
         public static IEnumerable<IEnumerable<T>> Batch<T>(this IEnumerable<T> items, int numberOfItemsPerBatch)
         {
-            return items.Select((item, totalNumber) => new { item, totalNumber })
-                .GroupBy(x => x.totalNumber / numberOfItemsPerBatch)
+            return items.Select((item, index) => new { item, index })
+                .GroupBy(x => x.index / numberOfItemsPerBatch)
                 .Select(x => x.Select(y => y.item));
         }
 
@@ -93,13 +66,7 @@ namespace BetaUtils.Core.Extensions
         /// <exception cref="ArgumentNullException"></exception>
         public static IEnumerable<T> RemoveNulls<T>(this IEnumerable<T> items)
         {
-            foreach (var item in items)
-            {
-                if (item != null)
-                {
-                    yield return item;
-                }
-            }
+            return items.Where(item => item != null);
         }
 
     }
