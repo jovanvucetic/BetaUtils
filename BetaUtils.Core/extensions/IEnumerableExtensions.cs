@@ -40,7 +40,6 @@ namespace BetaUtils.Core.Extensions
         /// <summary>
         /// Converts an IEnumerable to an Observable Collection
         /// </summary>
-        /// <param name="items">IEnumerable</param>
         /// <returns>ObservableCollection</returns>
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> items)
         {
