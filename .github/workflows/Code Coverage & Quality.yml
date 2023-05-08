@@ -23,8 +23,10 @@ jobs:
 
       - name: Build and test
         run: |
-          dotnet build
-          dotnet test --warnaserror --collect:"XPlat Code Coverage" --logger trx --results-directory TestResults /p:CoverletOutputFormat=lcov /p:MergeWith=coverage.json /p:ExcludeByFile="**/Program.cs"
+          dotnet build --warnaserror
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet test --no-build --no-restore --collect:"XPlat Code Coverage" --logger trx --results-directory TestResults /p:CoverletOutputFormat=lcov /p:MergeWith=coverage.json
+
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
 
