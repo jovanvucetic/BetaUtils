@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Core", "BetaUtils.Core\BetaUtils.Core.csproj", "{493D84C0-CED9-4F22-9A3B-4DA15634059E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.Core", "BetaUtils.Core\BetaUtils.Core.csproj", "{493D84C0-CED9-4F22-9A3B-4DA15634059E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Api.Core", "BetaUtils.Api.Core\BetaUtils.Api.Core.csproj", "{6C519EE4-8E3C-4258-B006-1D5F23126BC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.Api.Core", "BetaUtils.Api.Core\BetaUtils.Api.Core.csproj", "{6C519EE4-8E3C-4258-B006-1D5F23126BC4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{4AFCBC18-4813-4007-A76C-80FAB4D58099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Data", "BetaUtils.Data\BetaUtils.Data.csproj", "{3A31B2AD-2840-4E75-AC42-64136D21E44D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.Data", "BetaUtils.Data\BetaUtils.Data.csproj", "{3A31B2AD-2840-4E75-AC42-64136D21E44D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.DotNetCore", "BetaUtils.DotNetCore\BetaUtils.DotNetCore.csproj", "{0AAA1BC6-D1D0-4E33-AFAB-3E8278B7C2EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetaUtils.DotNetFramework", "BetaUtils.DotNetFramework\BetaUtils.DotNetFramework.csproj", "{2AD1D44B-57F7-47E8-83C6-A204B4DCE40D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.DotNetCore.Tests", "BetaUtils.DotNetCore.Tests\BetaUtils.DotNetCore.Tests.csproj", "{F9821DC9-475B-409F-82A0-91AC2CEDDD3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.DotNetFramework.Tests", "BetaUtils.DotNetFramework.Tests\BetaUtils.DotNetFramework.Tests.csproj", "{BA9BA997-C363-4A81-87FD-E9520714AD86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Core.Tests", "BetaUtils.Core.Tests\BetaUtils.Core.Tests.csproj", "{18517E5B-FD21-4981-90B5-8663AC5A33FB}"
 EndProject
@@ -31,6 +39,22 @@ Global
 		{3A31B2AD-2840-4E75-AC42-64136D21E44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A31B2AD-2840-4E75-AC42-64136D21E44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A31B2AD-2840-4E75-AC42-64136D21E44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAA1BC6-D1D0-4E33-AFAB-3E8278B7C2EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAA1BC6-D1D0-4E33-AFAB-3E8278B7C2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAA1BC6-D1D0-4E33-AFAB-3E8278B7C2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAA1BC6-D1D0-4E33-AFAB-3E8278B7C2EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AD1D44B-57F7-47E8-83C6-A204B4DCE40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AD1D44B-57F7-47E8-83C6-A204B4DCE40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AD1D44B-57F7-47E8-83C6-A204B4DCE40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AD1D44B-57F7-47E8-83C6-A204B4DCE40D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9821DC9-475B-409F-82A0-91AC2CEDDD3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9821DC9-475B-409F-82A0-91AC2CEDDD3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9821DC9-475B-409F-82A0-91AC2CEDDD3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9821DC9-475B-409F-82A0-91AC2CEDDD3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA9BA997-C363-4A81-87FD-E9520714AD86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9BA997-C363-4A81-87FD-E9520714AD86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9BA997-C363-4A81-87FD-E9520714AD86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9BA997-C363-4A81-87FD-E9520714AD86}.Release|Any CPU.Build.0 = Release|Any CPU
 		{18517E5B-FD21-4981-90B5-8663AC5A33FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{18517E5B-FD21-4981-90B5-8663AC5A33FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18517E5B-FD21-4981-90B5-8663AC5A33FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
