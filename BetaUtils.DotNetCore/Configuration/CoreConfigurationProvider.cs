@@ -1,6 +1,7 @@
 ﻿using BetaUtils.Core.Configuration;
 using BetaUtils.Core.Exceptions;
 using Microsoft.Extensions.Configuration;
+using System.ComponentModel;
 using System.Globalization;
 
 namespace BetaUtils.DotNetCore.Configuration
@@ -17,9 +18,10 @@ namespace BetaUtils.DotNetCore.Configuration
         /// <summary>
         /// This method will return a boolean value of a configuration item for provided key
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
+        /// <param name="key">Key of the configuration item</param>
         /// <returns>Boolean value of the configuration item</returns>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist or it is not a boolean</exception>
+        /// <exception cref="ArgumentException">If provided key is null</exception>
         public bool GetBooleanValue(string key)
         {
             var stringValue = GetStringValue(key);
@@ -38,31 +40,26 @@ namespace BetaUtils.DotNetCore.Configuration
         /// This method will return a boolean value of a configuration item for provided key. 
         /// If an item for the provided key does not exist, this method will return a provided default value
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
-        /// <param items="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
+        /// <param name="key">Key of the configuration item</param>
+        /// <param name="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
         /// <returns>Boolean value of the configuration item</returns>
+        /// <exception cref="ArgumentException">If provided key is null</exception>
         public bool GetBooleanValueOrDefault(string key, bool defaultValue = false)
-        {
-            var stringValue = GetStringValue(key);
-
-            if (bool.TryParse(stringValue, out var result))
-            {
-                return result;
-            }
-
-            return defaultValue;
-        }
+            => GetValueOrDefault(key, defaultValue);
 
         /// <summary>
         /// This method will return a new instance of a provided type, taken from the configuration item for provided key
         /// </summary>
-        /// <param items="sectionName">Key of the configuration item</param>
+        /// <param name="sectionName">Key of the configuration item</param>
         /// <returns>Instance of the provided type T, with values of the configuration item</returns>
-        /// <exception cref="ArgumentNullException">If a provided section name is null or empty</exception>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist</exception>
         public T GetConfigurationSection<T>(string sectionName) where T : class, new()
         {
-            ArgumentNullException.ThrowIfNull(sectionName);
+            if (string.IsNullOrEmpty(sectionName))
+            {
+                throw new ArgumentException("Provided section name cannot be null or empty string");
+            }
 
             var instance = new T();
             var section = _configuration.GetSection(sectionName);
@@ -80,9 +77,10 @@ namespace BetaUtils.DotNetCore.Configuration
         /// <summary>
         /// This method will return a DateTime value of a configuration item for provided key
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
+        /// <param name="key">Key of the configuration item</param>
         /// <returns>DateTime value of the configuration item</returns>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist or it is not a DateTime</exception>
+        /// <exception cref="ArgumentException">If provided key is null</exception>
         public DateTime GetDateValue(string key)
         {
             var stringValue = GetStringValue(key);
@@ -100,9 +98,10 @@ namespace BetaUtils.DotNetCore.Configuration
         /// <summary>
         /// This method will return a decimal value of a configuration item for provided key
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
+        /// <param name="key">Key of the configuration item</param>
         /// <returns>Decimal value of the configuration item</returns>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist or it is not a decimal</exception>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         public decimal GetDecimalValue(string key)
         {
             var stringValue = GetNormalizedNumericString(key);
@@ -121,27 +120,20 @@ namespace BetaUtils.DotNetCore.Configuration
         /// This method will return a decimal value of a configuration item for provided key. 
         /// If an item for the provided key does not exist, this method will return a provided default value
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
-        /// <param items="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
+        /// <param name="key">Key of the configuration item</param>
+        /// <param name="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
         /// <returns>Decimal value of the configuration item</returns>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         public decimal GetDecimalValueOrDefault(string key, decimal defaultValue = 0)
-        {
-            var stringValue = GetNormalizedNumericString(key);
-
-            if (!decimal.TryParse(stringValue, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal result))
-            {
-                result = defaultValue;
-            }
-
-            return result;
-        }
+            => GetValueOrDefault(key, defaultValue);
 
         /// <summary>
         /// This method will return a double value of a configuration item for provided key
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
+        /// <param name="key">Key of the configuration item</param>
         /// <returns>Double value of the configuration item</returns>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist or it is not a double</exception>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         public double GetDoubleValue(string key)
         {
             var stringValue = GetNormalizedNumericString(key);
@@ -161,25 +153,17 @@ namespace BetaUtils.DotNetCore.Configuration
         /// This method will return a double value of a configuration item for provided key. 
         /// If an item for the provided key does not exist, this method will return a provided default value
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
-        /// <param items="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
+        /// <param name="key">Key of the configuration item</param>
+        /// <param name="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
         /// <returns>Double value of the configuration item</returns>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         public double GetDoubleValueOrDefault(string key, double defaultValue = 0)
-        {
-            var stringValue = GetNormalizedNumericString(key);
-
-            if (!double.TryParse(stringValue, NumberStyles.Any, CultureInfo.InvariantCulture, out double result))
-            {
-                result = defaultValue;
-            }
-
-            return result;
-        }
+            => GetValueOrDefault(key, defaultValue);
 
         /// <summary>
         /// This method will return a Guid value of a configuration item for provided key
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
+        /// <param name="key">Key of the configuration item</param>
         /// <returns>Guid value of the configuration item</returns>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist or it is not a Guid</exception>
         public Guid GetGuidValue(string key)
@@ -200,27 +184,20 @@ namespace BetaUtils.DotNetCore.Configuration
         /// This method will return an Guid value of a configuration item for provided key. 
         /// If an item for the provided key does not exist, this method will return a provided default value
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
-        /// <param items="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
+        /// <param name="key">Key of the configuration item</param>
+        /// <param name="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
         /// <returns>Guid value of the configuration item</returns>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         public Guid GetGuidValueOrDefault(string key, Guid defaultValue = default)
-        {
-            var stringValue = GetStringValue(key);
-
-            if (!Guid.TryParse(stringValue, out Guid result))
-            {
-                result = defaultValue;
-            }
-
-            return result;
-        }
+            => GetValueOrDefault(key, defaultValue);
 
         /// <summary>
         /// This method will return an integer value of a configuration item for provided key
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
+        /// <param name="key">Key of the configuration item</param>
         /// <returns>Int value of the configuration item</returns>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist or it is not an integer</exception>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         public int GetIntValue(string key)
         {
             var stringValue = GetStringValue(key);
@@ -239,29 +216,27 @@ namespace BetaUtils.DotNetCore.Configuration
         /// This method will return an integer value of a configuration item for provided key. 
         /// If an item for the provided key does not exist, this method will return a provided default value
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
-        /// <param items="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
+        /// <param name="key">Key of the configuration item</param>
+        /// <param name="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
         /// <returns>Int value of the configuration item</returns>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         public int GetIntValueOrDefault(string key, int defaultValue = 0)
-        {
-            var stringValue = GetStringValue(key);
-
-            if (!int.TryParse(stringValue, out int result))
-            {
-                result = defaultValue;
-            }
-
-            return result;
-        }
+            => GetValueOrDefault(key, defaultValue);
 
         /// <summary>
         /// This method will return text value of a configuration item for provided key
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
+        /// <param name="key">Key of the configuration item</param>
         /// <returns>Text value of the configuration item</returns>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist</exception>
+        /// <exception cref="ArgumentException">If provided key is null</exception>
         public string GetStringValue(string key)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("Provided configuration key cannot be null or empty string");
+            }
+
             return _configuration[key];
         }
 
@@ -269,11 +244,17 @@ namespace BetaUtils.DotNetCore.Configuration
         /// This method will return text value of a configuration item for provided key. 
         /// If an item for the provided key does not exist, this method will return a provided default value
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
-        /// <param items="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
+        /// <param name="key">Key of the configuration item</param>
+        /// <param name="defaultValue">Value that will be returned if configuration item with provided key does not exist</param>
         /// <returns>Text value of the configuration item</returns>
+        /// <exception cref="ArgumentException">If provided key is null</exception>
         public string GetStringValueOrDefault(string key, string defaultValue = "")
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("Provided configuration key cannot be null or empty string");
+            }
+
             var value = _configuration[key];
             return value ?? defaultValue;
         }
@@ -281,9 +262,10 @@ namespace BetaUtils.DotNetCore.Configuration
         /// <summary>
         /// This method will return an Uri value of a configuration item for provided key
         /// </summary>
-        /// <param items="key">Key of the configuration item</param>
+        /// <param name="key">Key of the configuration item</param>
         /// <returns>Uri value of the configuration item</returns>
         /// <exception cref="MissingConfigurationException">If item for provided key does not exist or it is not a Uri</exception>
+        /// <exception cref="ArgumentException">If a provided section name is null or empty</exception>
         public Uri GetUri(string key)
         {
             var stringValue = GetStringValue(key);
@@ -291,6 +273,23 @@ namespace BetaUtils.DotNetCore.Configuration
             VerifyIfConfigurationValueExists(key, stringValue);
 
             return new Uri(stringValue);
+        }
+
+        private T GetValueOrDefault<T>(string key, T defaultValue = default)
+        {
+            try
+            {
+                string stringValue = GetStringValue(key);
+                VerifyIfConfigurationValueExists(key, stringValue);
+
+                TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
+
+                return (T)converter.ConvertFromString(stringValue);
+            }
+            catch
+            {
+                return defaultValue;
+            }
         }
 
         private string GetNormalizedNumericString(string key)
