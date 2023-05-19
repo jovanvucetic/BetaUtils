@@ -1,6 +1,7 @@
-Build and Code Coverage:\
-[![Code Coverage & Quality](https://github.com/jovanvucetic/BetaUtils/actions/workflows/Code%20Coverage%20&%20Quality.yml/badge.svg)](https://github.com/jovanvucetic/BetaUtils/actions/workflows/Code%20Coverage%20&%20Quality.yml)
-
+Build status (main branch):\
+[![Code Coverage & Quality](https://github.com/jovanvucetic/BetaUtils/actions/workflows/Code%20Coverage%20&%20Quality.yml/badge.svg)](https://github.com/jovanvucetic/BetaUtils/actions/workflows/Code%20Coverage%20&%20Quality.yml)\
+Code coverage (main branch):\
+[![codecov](https://codecov.io/gh/jovanvucetic/BetaUtils/branch/main/graph/badge.svg?token=HLRMMX05NP)](https://codecov.io/gh/jovanvucetic/BetaUtils)
 <!-- TOC -->
 * [BetaUtils code styling and conventions](#betautils-code-styling-and-conventions)
 * [Creating working branch](#creating-working-branch)
