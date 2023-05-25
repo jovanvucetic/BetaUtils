@@ -388,10 +388,12 @@ namespace BetaUtils.DotNetFramework.Tests.Configuration
         [DataTestMethod]
         public void GetStringValue_WhenKeyIsNullOrEmpty_WillThrowArgumentNullException(string keyValue)
         {
+            //Arrange
             var context = new WindowsConfigurationProviderTestContext();
 
             WindowsConfigurationProvider configurationRepository = context.CreateCoreConfigurationProvider();
 
+            //Act Assert
             Assert.ThrowsException<ArgumentException>(() => configurationRepository.GetStringValue(keyValue));
         }
 

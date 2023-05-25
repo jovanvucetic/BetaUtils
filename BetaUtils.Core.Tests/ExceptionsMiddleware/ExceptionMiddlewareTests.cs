@@ -65,9 +65,7 @@ public class ExceptionMiddlewareTests
 
         ExceptionMiddleware exceptionMiddleware = new(_requestDelegateMock.Object, _actionResultExecutorMock.Object);
 
-        // Act
-
-        // Assert
+        //Act Assert
         await Assert.ThrowsExceptionAsync<HttpRequestException>(async () => await exceptionMiddleware.Invoke(context).ConfigureAwait(false))
             .ConfigureAwait(false);
 
