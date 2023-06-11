@@ -1,11 +1,12 @@
-﻿using BetaUtils.Core.Exceptions.Middleware;
+﻿using BetaUtils.Api.Core.Middleware.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace BetaUtils.Core.Tests.ExceptionsMiddleware;
+namespace BetaUtils.Api.Core.Tests.ExceptionsMiddleware;
 
 [TestClass]
 public class ExceptionMiddlewareTests

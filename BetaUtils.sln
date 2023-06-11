@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.DotNetFramework.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Core.Tests", "BetaUtils.Core.Tests\BetaUtils.Core.Tests.csproj", "{18517E5B-FD21-4981-90B5-8663AC5A33FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetaUtils.Api.Core.Tests", "BetaUtils.Api.Core.Tests\BetaUtils.Api.Core.Tests.csproj", "{A1010E14-CBC7-417D-BB4F-6C848039D6A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{18517E5B-FD21-4981-90B5-8663AC5A33FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18517E5B-FD21-4981-90B5-8663AC5A33FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18517E5B-FD21-4981-90B5-8663AC5A33FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1010E14-CBC7-417D-BB4F-6C848039D6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1010E14-CBC7-417D-BB4F-6C848039D6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1010E14-CBC7-417D-BB4F-6C848039D6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1010E14-CBC7-417D-BB4F-6C848039D6A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

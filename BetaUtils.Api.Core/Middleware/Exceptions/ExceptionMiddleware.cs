@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Routing;
 
-namespace BetaUtils.Core.Exceptions.Middleware;
+namespace BetaUtils.Api.Core.Middleware.Exceptions;
 
 /// <summary>
 /// Handling exceptions that occur during the execution of subsequent middleware components in an ASP.NET Core application
@@ -38,7 +38,7 @@ public class ExceptionMiddleware
         {
             (string ExceptionName, int StatusCode) exceptionInformation = ExceptionInformation(ex);
 
-            ResponseHeaderHandler.ClearResponse(context, TrackedExceptions.GetExceptionStatusCode(ex));
+            ResponseHeaderHandler.ClearResponse(context, exceptionInformation.StatusCode);
 
             RouteData routeData = context.GetRouteData() ?? EmptyRouteData;
 

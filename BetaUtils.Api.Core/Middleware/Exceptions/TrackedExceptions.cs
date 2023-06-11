@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 
-namespace BetaUtils.Core.Exceptions.Middleware;
+namespace BetaUtils.Api.Core.Middleware.Exceptions;
 
 public static class TrackedExceptions
 {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Microsoft.Net.Http.Headers;
 
-namespace BetaUtils.Core.Exceptions.Middleware;
+namespace BetaUtils.Api.Core.Middleware.Exceptions;
 
 public static class ResponseHeaderHandler
 {

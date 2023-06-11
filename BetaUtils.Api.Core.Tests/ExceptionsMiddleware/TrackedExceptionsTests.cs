@@ -1,7 +1,8 @@
-﻿using BetaUtils.Core.Exceptions.Middleware;
+﻿using BetaUtils.Api.Core.Middleware.Exceptions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BetaUtils.Core.Tests.ExceptionsMiddleware;
+namespace BetaUtils.Api.Core.Tests.ExceptionsMiddleware;
 
 [TestClass]
 public class TrackedExceptionsTests
