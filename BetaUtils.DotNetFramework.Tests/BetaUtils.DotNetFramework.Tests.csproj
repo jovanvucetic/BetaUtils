@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BetaUtils.Core\BetaUtils.Core.csproj" />
     <ProjectReference Include="..\BetaUtils.DotNetFramework\BetaUtils.DotNetFramework.csproj" />
   </ItemGroup>
 

@@ -60,7 +60,6 @@ namespace BetaUtils.Core.Extensions
         /// <summary>
         /// Takes IEnumerable as a source and returns it with all the null values removed
         /// </summary>
-        /// <param items="source">IEnumerable</param>
         /// <returns>IEnumerable without null values</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public static IEnumerable<T> RemoveNulls<T>(this IEnumerable<T> items)

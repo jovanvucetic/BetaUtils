@@ -1,8 +1,6 @@
 ﻿using BetaUtils.Core.Extensions;
 
-
-
-namespace BetaUtils.Tests.Extensions
+namespace BetaUtils.Core.Tests.Extensions
 {
     [TestClass]
     public class IEnumerableExtensionsTests
@@ -106,6 +104,46 @@ namespace BetaUtils.Tests.Extensions
             var expected = "1,2,3";
             var result = string.Join(",", items.RemoveNulls());
             Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Batch_ReturnsCorrectBatches()
+        {
+            // Arrange
+            List<int> items = new()
+                { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            // Act
+            IEnumerable<IEnumerable<int>>? result = items.Batch(3);
+
+            // Assert
+            Assert.AreEqual(4, result.Count());
+
+            Assert.IsTrue(result.ElementAt(0).SequenceEqual(new List<int> { 1, 2, 3 }));
+            Assert.IsTrue(result.ElementAt(1).SequenceEqual(new List<int> { 4, 5, 6 }));
+            Assert.IsTrue(result.ElementAt(2).SequenceEqual(new List<int> { 7, 8, 9 }));
+            Assert.IsTrue(result.ElementAt(3).SequenceEqual(new List<int> { 10 }));
+        }
+
+        [TestMethod]
+        public void RemoveNulls_ReturnsIEnumerable_WithoutNullValues()
+        {
+            //Arrange
+            List<string?> nullObjectList = new()
+            {
+                "firstComponent",
+                "secondComponent",
+                null!,
+                "firstComponent",
+                null!,
+            };
+
+            //Act
+            IEnumerable<string?> result = nullObjectList.RemoveNulls();
+
+            //Assert
+            Assert.AreEqual(3, result.Count());
+            Assert.IsFalse(result.Any(s => s is null));
         }
     }
 }

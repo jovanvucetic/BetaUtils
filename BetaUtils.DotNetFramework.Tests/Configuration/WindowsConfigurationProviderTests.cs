@@ -383,6 +383,20 @@ namespace BetaUtils.DotNetFramework.Tests.Configuration
             Assert.AreEqual(expectedValue, resultValue);
         }
 
+        [DataRow(null)]
+        [DataRow("")]
+        [DataTestMethod]
+        public void GetStringValue_WhenKeyIsNullOrEmpty_WillThrowArgumentNullException(string keyValue)
+        {
+            //Arrange
+            var context = new WindowsConfigurationProviderTestContext();
+
+            WindowsConfigurationProvider configurationRepository = context.CreateCoreConfigurationProvider();
+
+            //Act Assert
+            Assert.ThrowsException<ArgumentException>(() => configurationRepository.GetStringValue(keyValue));
+        }
+
         [TestMethod]
         public void GetStringValueOrDefault_ValueCannotBeParsed_DefaultValueReturned()
         {
